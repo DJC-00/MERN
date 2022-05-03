@@ -109,3 +109,47 @@ const oFoods = filterGroceries.filter(item => item.includes("o"));
 // Using filter() with map() allows you to pick specific elements in an array, manipulate them, and copy them to a new array.
 const filterMapValues = [1, 2, 3, 4, 5];
 const oddCubes = filterMapValues.filter(val => val % 2 !== 0).map(val => val ** 3);
+
+// \|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\| {_Currying_} |\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|
+
+// Currying is the idea that you only run part of a function, rather than the whole thing.
+// Uncurried
+function ninjaBelt(ninja, beltColor) {
+    console.log("Ninja " + ninja + " has earned a " + beltColor + " belt.");
+}
+ninjaBelt('Eileen', 'black');
+
+// Curried
+function ninjaBelt(ninja) {
+    return function belt(beltColor) { //note the closure here!
+        console.log("Ninja " + ninja + " has earned a " + beltColor + " belt.");
+    }
+}
+ninjaBelt('Eileen')('black'); //note the double invocation here.
+
+// \|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\| {_Closures_} |\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|
+
+// here we have a function called "Outer"
+function outer() {
+    let count = 0; // this is a count variable that is scoped to the function
+    // there is an inner function that increments count and then console logs it
+    function inner() {
+        count++;
+        console.log(count);
+    }
+    // we're returning the inner function
+    return inner;
+}
+
+const counter = outer(); // counter is the function that we returned from calling the outer function
+counter(); // this will console.log "1"
+counter(); // this will console.log "2"
+counter(); // this will console.log "3"
+counter(); // this will console.log "4"
+
+// so that means that the count variable still exists! 
+// and it is being changed even though we aren't inside of the Outer function!
+// can we access count out here?
+console.log(count); // doesn't work!
+
+// The count variable persists because it gets stored in the counter variable when the outer() function returns the inner() function

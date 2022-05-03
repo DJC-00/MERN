@@ -1,0 +1,6 @@
+// With React, we can make a basic component using React.createElement. React.createElement has three main parameters. First, we need to tell React what kind of element we want to create, let's say an h1 tag. Next, we can pass in props. We will explore this concept in more depth later, but for the time being let's just pass in an empty object, via {}. Lastly, we will tell React.createElement the children we want to include. That is, we need to tell React the items we want within our h1 tag. This could be a string, such as "I am creating my first React component". Or, we could nest another component via another React.createElement function call. An example would be as follows:
+
+// create myReactComponent, type of element, props, component children
+const myReactComponent = React.createElement("h1", {}, "I am creating my first React component");
+// nested example where the child is another react component
+const myNestedReactComponent = React.createElement("div", {}, React.createElement("p", {}, "This element is nested"));
