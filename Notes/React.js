@@ -81,6 +81,7 @@ class App extends Component {
 // If we were to rewrite this into JSX, how should it know to handle the
 // for on line 3 as the HTML version of for and not as a JavaScript for?
 
+/*
 class App extends Component {    
     render() {        
         return (            
@@ -93,3 +94,45 @@ class App extends Component {
         );    
     }
 }
+*/
+
+// ╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩ [_Proprties (props)_] ╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩╤╩
+
+// Props are defined in the app.js like this
+<div>
+    <Header firstName={"Doug"} lastName={"Dimmadome"}/>
+</div>
+
+// Class properties can be referenced by using {this.props.PROP_NAME}
+class Header extends React.Component {
+    render() {
+        return (
+            <div>
+                // By inheriting from React.Component all we need is the "this" keyword in front of props.
+                <h1>My name is { this.props.firstName } { this.props.lastName }</h1>
+            </div>
+        );
+    }
+}
+
+// Or by defining the properties and calling them by their defined names
+class Header extends React.Component {
+    render() {
+        const { firstName, lastName } = this.props;
+        return (
+            <div>
+              // Destructuring allows us to use them like variables. This is just a small amount of syntactical sugar.
+                <h1>My name is { firstName}  { lastName }</h1>
+            </div>
+        );
+    }
+}
+
+// Because the data flow in React flows downward, we use props all the time to pass data down from component to component. 
+// We are not limited in the amount of stuff we can pass down in props. We can pass down anything we want including functions.
+
+<>
+    <SomeComponent someProp="test" someOtherProp={67} /> //Valid. We can send normal strings, but in numbers need curly braces
+    <SomeComponent someProp={"test"} someOtherProp={67} /> //Valid. A String is still a Javascript expression
+    {/* <SomeComponent someProp="test" someOtherProp=67/> //Invalid. Numbers need curly braces */}
+</> //Valid. A String is still a Javascript expression

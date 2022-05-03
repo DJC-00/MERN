@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import React from 'react';
 import './App.css';
+import MyComponent from './components/MyComponent';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
           <li>Run a marathon</li>
           <li>Feed the dogs</li>
         </ul>
+      <div>
+        <MyComponent someText={"Hello World"} otherText={"a"}/>
+      </div>
       </div>
     </div>
   );
