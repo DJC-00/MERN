@@ -132,7 +132,8 @@ class Header extends React.Component {
 // We are not limited in the amount of stuff we can pass down in props. We can pass down anything we want including functions.
 
 <>
-    <SomeComponent someProp="test" someOtherProp={67} /> //Valid. We can send normal strings, but in numbers need curly braces
-    <SomeComponent someProp={"test"} someOtherProp={67} /> //Valid. A String is still a Javascript expression
+    <SomeComponent someProp="test" someOtherProp={67} /> {/*Valid. We can send normal strings, but in numbers need curly braces*/}
+    <SomeComponent someProp={"test"} someOtherProp={67} /> {/*Valid. A String is still a Javascript expression*/}
     {/* <SomeComponent someProp="test" someOtherProp=67/> //Invalid. Numbers need curly braces */}
-</> //Valid. A String is still a Javascript expression
+</> 
+

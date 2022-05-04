@@ -22,7 +22,7 @@ function App() {
         <PersonCard
           firstName={"Lil"}
           lastName={"Wayne"}
-          age={"??"}
+          age={"39"}
           hairColor={"Black"}/>
       </div>
       <div style={{padding:' 0 5em' }}>
