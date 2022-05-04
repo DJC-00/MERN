@@ -1,9 +1,9 @@
 import React from 'react';
-import Message from './components/MyComponent';
+import UserForm from './components/MyComponent';
 
 function App() {
     return (
-        <Message />
+        <UserForm />
     );
 }
 

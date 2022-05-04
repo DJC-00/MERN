@@ -1,39 +1,40 @@
-import React, { Component } from 'react';
+import React, { useState } from  'react';
     
     
-class Message extends Component{
-    // Declare constructor to override our default constructor so that we can initially set the state object
-    constructor(props){
-        // gives us the functionality that comes with the default constructor
-        super(props);
-        this.state = {
-            state: 2,
-            message: "Welcome",
-            logText: "login"
-        }
-
-    }
-
-    logInOut = (e) => {
-        if (this.state.state == 1){
-            this.setState({message: "Goodbye Friend!"});
-            this.setState({logText: "login"});
-            this.setState({state: 2})
-        } else if (this.state.state == 2){
-            this.setState({message: "Hello Buddy!"});
-            this.setState({logText: "logout"});
-            this.setState({state: 1})
-        }
-        // this.setState({message: "Goodbye Friend!"});
-    }
-    render(){
-        return(
+const UserForm = (props) => {
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");  
+    
+    const createUser = (e) => {
+        e.preventDefault();
+        const newUser = { username, email, password };
+        console.log("Welcome", newUser.username);
+        setUsername("")
+        setEmail("")
+        setPassword("")
+    };
+    
+    return(
+        <form onSubmit={ createUser }>
             <div>
-                <h1>{this.state.message}</h1>
-                <button onClick={this.logInOut}>{this.state.logText}</button>
+                <label>Username: </label> 
+                {/* e is the event handler variable that contains information about the input it's referencing */}
+                {/* value = {username} allows us to persist the information in the input field after it's been cleared */}
+                {/* on line 13-15, setUsername("") will reset the form after we have retrieved the data from the input field. */}
+                <input type="text" onChange={ (e) => setUsername(e.target.value) } value={username} /> 
             </div>
-        );
-    }
-}
+            <div>
+                <label>Email Address: </label> 
+                <input type="text" onChange={ (e) => setEmail(e.target.value) } value={email}/>
+            </div>
+            <div>
+                <label>Password: </label>
+                <input type="text" onChange={ (e) => setPassword(e.target.value) } value={password} />
+            </div>
+            <input type="submit" value="Create User" />
+        </form>
+    );
+};
     
-export default Message;
+export default UserForm;
