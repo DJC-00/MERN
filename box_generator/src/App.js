@@ -9,19 +9,20 @@ function App() {
     
   const addColorToArray = ( color ) => {
 
-    colors.push(color)
+    // colors.push(color)
     console.log(colors, colors.length)
-    setColors(colors)
-    setCurrentMsg(color)
+    // setColors(colors => [...colors,color])
+    setColors([...colors,color])
+    // setCurrentMsg(color)
   };
   
   return (
     <>
     <div style={{padding:'20px'}}>
       <ColorForm onNewColor={ addColorToArray }/>
+      <div style={{display:'flex', flexWrap:'wrap', justifyContent:'center'}}>
       <Box colorArray={colors}/>
-      {/* <MessageForm ColorForm={ youveGotMail } />
-      <MessageDisplay message={ currentMsg } /> */}
+      </div>
     </div>
     </>
   );
