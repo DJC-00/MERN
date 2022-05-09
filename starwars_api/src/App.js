@@ -6,7 +6,7 @@ import {
   useHistory
 } from "react-router-dom";
 
-import PersonInfo from './components/PersonInfo';
+import ItemInfo from './components/ItemInfo';
 import Selection from './components/Selection';
 
 const Home = (props) => {
@@ -31,7 +31,7 @@ function App(props) {
           </Route>
           <Selection/>
           <Switch>
-            <Route path="/info/:category/:searchIndex" component={PersonInfo}/>
+            <Route path="/info/:category/:searchIndex" component={ItemInfo}/>
           </Switch>
         </BrowserRouter>
       </div>

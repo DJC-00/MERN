@@ -15,9 +15,7 @@ const Selection = (props) => {
   const handleForm = (e) => {
     localStorage.setItem('selection', category)
     localStorage.setItem('index', searchIndex)
-    console.log(category, searchIndex)
-    console.log(history)
-    history.push(`/info/${category}/${searchIndex}`)
+    history.push(`/info/${category}/${searchIndex}/`)
     history.goForward();
   }
 
@@ -32,7 +30,7 @@ const Selection = (props) => {
     </label>
     <input type="number" value={searchIndex} onChange={(e) => setSearchIndex(e.target.value)}/>
     <br/>
-    <input type="submit" value="Submit" Link to=":category/:searchIndex" />
+    <input type="submit" value="Submit" Link to=":category/:searchIndex/" />
   </form>
 
   );
