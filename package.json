@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "http-errors": "^2.0.0",
+    "pino": "^7.11.0",
+    "pino-http": "^7.0.0",
+    "pino-pretty": "^7.6.1"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^6.3.1"
+  },
+  "name": "express_test",
+  "version": "1.0.0",
+  "description": "",
+  "author": "DJC-00 <djcastle2172@gmail.com>",
+  "keywords": [],
+  "license": "ISC",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DJC-00/MERN.git"
+  },
+  "scripts": {
+    "start": "./bin/app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
