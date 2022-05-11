@@ -1,0 +1,83 @@
+Create 5 students with the appropriate info.
+> db.users.insert({name: 'Amelia', home_state: 'Ohio', lucky_number: 99, birthday: {month : 12, day: 16, year: 1989}})
+> db.users.insert({name: 'DJ', home_state: 'Ohio', lucky_number: 21, birthday: {month : 8, day: 10, year: 1993}})
+> db.users.insert({name: 'Joe', home_state: 'Montana', lucky_number: 221, birthday: {month : 4, day: 20, year: 1990}})
+> db.users.insert({name: 'BobbyJoe', home_state: 'Kentucky', lucky_number: 43, birthday: {month : 2, day: 21, year: 1995}})
+> db.users.insert({name: 'Ellie', home_state: 'California', lucky_number: 1, birthday: {month : 9, day: 9, year: 1989}})
+or
+> db.users.insertMany( [
+    {name: 'Amelia', home_state: 'Ohio', lucky_number: 99, birthday: {month : 12, day: 16, year: 1989}},
+    {name: 'DJ', home_state: 'Ohio', lucky_number: 21, birthday: {month : 8, day: 10, year: 1993}},
+    {name: 'Joe', home_state: 'Montana', lucky_number: 221, birthday: {month : 4, day: 20, year: 1990}},
+    {name: 'BobbyJoe', home_state: 'Kentucky', lucky_number: 43, birthday: {month : 2, day: 21, year: 1995}},
+    {name: 'Ellie', home_state: 'California', lucky_number: 1, birthday: {month : 9, day: 9, year: 1989}}
+] );
+
+Get all students.
+db.users.find()
+
+Retrieve all students who are from California (San Jose Dojo) or Washington (Seattle Dojo).
+> db.users.find({home_state: 'California'}).pretty()
+
+Get all students whose lucky number is greater than 3
+> db.users.find({lucky_number:{$gt:3}}).pretty()
+
+Get all students whose lucky number is less than or equal to 10
+> db.users.find({lucky_number:{$lte:10}}).pretty()
+
+Get all students whose lucky number is between 1 and 9 (inclusive)
+> db.users.find({ $and: [ {lucky_number:{$gte:1}},{lucky_number:{$lte:9}} ]})
+
+Add a field to each student collection called 'interests' that is an ARRAY. It should contain the following entries: 'coding', 'brunch', 'MongoDB'. Do this in ONE operation.
+> db.users.updateMany({}, { $set: {intersts:['coding', 'brunch', 'MongoDB']}})
+
+Add some unique interests for each particular student into each of their interest arrays.
+> db.users.updateOne({name:'DJ'}, {$push: {intersts: 'DnD'}})
+> db.users.updateOne({name:'Amelia'}, {$push: {intersts: 'Puzzles'}})
+> db.users.updateOne({name:'Joe'}, {$push: {intersts: 'Audio'}})
+> db.users.updateOne({name:'BobbyJoe'}, {$push: {intersts: 'Dirt Track Racing'}})
+> db.users.updateOne({name:'Ellie'}, {$push: {intersts: 'Drinking'}})
+
+Add the interest 'taxes' into someone's interest array.
+> db.users.updateOne({name:'Ellie'}, {$push: {intersts: 'taxes'}})
+
+Remove the 'taxes' interest you just added.
+> db.users.updateOne({name:'Ellie'}, {$pull: {intersts: 'taxes'}})
+
+Remove all students who are from California.
+> db.users.deleteMany({home_state:'California'})
+
+Remove a student by name. 
+> db.users.deleteOne({name:'BobbyJoe'})
+
+Remove a student whose lucky number is greater than 5 (JUST ONE)
+> db.users.deleteOne({lucky_number:{$gt:5}})
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////// Add Users From Washington ////////////////////////////////////////////
+
+> db.users.insertMany( [
+    {name: 'Bob', home_state: 'Washington', lucky_number: 99, birthday: {month : 12, day: 16, year: 1989}},
+    {name: 'Tom', home_state: 'Washington', lucky_number: 21, birthday: {month : 8, day: 10, year: 1993}},
+    {name: 'Brandon', home_state: 'Washington', lucky_number: 221, birthday: {month : 4, day: 20, year: 1990}},
+    {name: 'Edd', home_state: 'Washington', lucky_number: 43, birthday: {month : 2, day: 21, year: 1995}},
+    {name: 'Kyle', home_state: 'Washington', lucky_number: 1, birthday: {month : 9, day: 9, year: 1989}}
+] );
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Add a field to each student collection called 'number_of_belts' and set it to 0.
+> db.users.updateMany({}, { $set: {number_of_belts : 0 }})
+
+Increment this field by 1 for all students in Washington (Seattle Dojo).
+> db.users.updateMany({home_state:'Washington'}, { $inc: {number_of_belts : 1}})
+
+Rename the 'number_of_belts' field to 'belts_earned'
+> db.users.updateMany({}, { $rename: {'number_of_belts':'belts_earned'}})
+
+Remove the 'lucky_number' field.
+> db.users.updateMany({}, { $unset: {lucky_number:''}})
+
+Add a 'updated_on' field, and set the value as the current date.
+> db.users.updateMany({}, { $currentDate: {updated_on: true}})
