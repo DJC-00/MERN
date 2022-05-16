@@ -1,18 +1,36 @@
 
-import './App.css';
 import React from 'react';
-import Test from './views/Test'
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  Routes
+} from "react-router-dom";
+import ProductDetails from './views/ProductDetails';
+import AllProducts from './views/AllProducts';
 import NavBar from './components/NavBar';
-import ThingForm from './components/ProductForm';
+
+function Home() {
+  return (
+    <div>
+      <h2>Welcome</h2>
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <div className = "p-6">
-        <ThingForm/>
-        {/* <NavBar/>
-        <Test/> */}
-      </div>
+    <div className='container'>
+      <NavBar/>
+      <BrowserRouter>
+        <div className="App">
+          <Routes>
+            <Route exact path="/" element = {<Home/>}/>
+            <Route exact path="/products" element = {<AllProducts/>}/>
+            <Route exact path="/product/:id" element = {<ProductDetails/>}/>
+          </Routes>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
