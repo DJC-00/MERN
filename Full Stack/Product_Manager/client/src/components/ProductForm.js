@@ -19,6 +19,9 @@ const ProductForm = (props) => {
         })
         .then(response => console.log(response))
         .catch(error => console.log(error))
+        setTitle("")
+        setPrice("")
+        setDesc("")
     }
 
     return (
@@ -30,19 +33,19 @@ const ProductForm = (props) => {
                         <div className='field'>
                             <label className='label'>Title</label>
                             <div className='control'>
-                                <input className="input is-primary" type="text" onChange={(e)=>setTitle(e.target.value)} price={title}/>
+                                <input className="input is-primary" type="text" onChange={(e)=>setTitle(e.target.value)} price={title} value = {title}/>
                             </div>
                         </div>
                         <div className='field'>
                             <label className='label'>Price</label>
-                            <input className="input is-primary" type="number" onChange={(e)=>setPrice(e.target.value)} price={price}/>
+                            <input className="input is-primary" type="number" onChange={(e)=>setPrice(e.target.value)} price={price} value = {price}/>
                         </div>
                         <div className='field'>
                             <label className='label'>Description</label>
-                            <input className="input is-primary" type="text" onChange={(e)=>setDesc(e.target.value)} price={desc}/>
+                            <input className="input is-primary" type="text" onChange={(e)=>setDesc(e.target.value)} price={desc} value = {desc}/>
                         </div>
                         <div className='control  has-text-centered'>
-                            <input className='button has-background-primary-dark has-text-white is-link'  type="submit"/>
+                            <input className='button has-background-primary-dark has-text-white is-link'  type="submit" value="Add Product"/>
                         </div>
                     </form>
                 </div>

@@ -9,4 +9,11 @@ module.exports = function(app){
 
 // Post -------------------------------------------------
     app.post('/api/newProduct', ProductCtrl.createProduct)
+
+// Put -------------------------------------------------
+    app.put('/api/product/:id', ProductCtrl.updateProduct)
+
+// Delete -----------------------------------------------
+    app.delete('/api/product/:id', ProductCtrl.deleteProduct)
+
 }

@@ -3,49 +3,48 @@ import React, { useState, useParams } from 'react';
 const NavBar = (props) => {
     //onChange to update firstName and lastName
     return (
-<nav class="navbar" role="navigation" aria-label="main navigation">
+<nav className="navbar" role="navigation" aria-label="main navigation">
 
 
-  <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar-start">
-      <a class="navbar-item" href='/products'>
+  <div id="navbarBasicExample" className="navbar-menu">
+    <div className="navbar-start" >
+      <a className="navbar-item" href='/'>
+        Home
+      </a>
+      <a className="navbar-item" href='/products'>
         All Products
       </a>
 
-      <a class="navbar-item">
-        Documentation
-      </a>
-
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
+      <div className="navbar-item has-dropdown is-hoverable">
+        <a className="navbar-link">
           More
         </a>
 
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
+        <div className="navbar-dropdown">
+          <a className="navbar-item">
             About
           </a>
-          <a class="navbar-item">
+          <a className="navbar-item">
             Jobs
           </a>
-          <a class="navbar-item">
+          <a className="navbar-item">
             Contact
           </a>
-          <hr class="navbar-divider"/>
-          <a class="navbar-item">
+          <hr className="navbar-divider"/>
+          <a className="navbar-item">
             Report an issue
           </a>
         </div>
       </div>
     </div>
 
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
+    <div className="navbar-end">
+      <div className="navbar-item">
+        <div className="buttons">
+          <a className="button is-primary">
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light">
+          <a className="button is-light">
             Log in
           </a>
         </div>
